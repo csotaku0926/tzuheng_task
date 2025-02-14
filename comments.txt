@@ -1,0 +1,22 @@
+1. DBS-OP and DBS-FS and DBS-reconstruct 對於不同系統及參數設定的performance 
+2. DBS vs Dijkstra and A* 的優勢 （例如：平均快多少，在不同設定下，呈現的效果如何？）
+3. DFB-FS 比 DBS-op, 及 Dijkstra and A* 效能好多少？
+4. 不同node failure 比例下，DBS-reconstruct 的表現及Dijkstra and A*表現
+5. 用 real world data set 的測試結果
+
+Out of battery 的呈現方式，
+因為論文中說，我們的方法可以做fast path recovery, 但是Dijkstra and A*不行
+所以我們要有一張圖來表示我們的方法
+就是DBS-reconstruct 在不同的 node failure ratio之下 跟比他們好多少
+其他的圖不需要附node failure 的結果。
+
+
+--------------
+0119 update
+
+please kill me
+
+1. impact of number of layers (fix other factors)
+constellation scale (single, multi-layer), node density, plane regulations (每個 plane 部屬的差異)
+2. gamma & search space
+update cost, iteration time
