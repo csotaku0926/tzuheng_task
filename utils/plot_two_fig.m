@@ -44,7 +44,8 @@ yyaxis left;
 % change left ylabel color to black
 ax.YAxis(1).Color = [0 0 0];
 xticks(x1);
-xticklabels(["4 layers", "7 layers", '7 layers with 1% node failure', ''])
+xticklabels(["4 layers", "7 layers", '1% failure', ''])
+xtickangle(0);
 b1 = bar(x1, y1, 'Facecolor', 'flat'); % Grouped bars
 
 ylabel('Number of Visited Nodes');

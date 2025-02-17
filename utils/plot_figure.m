@@ -10,9 +10,9 @@ function plot_figure(x, y, lgds, x_lim, x_ticks, saved_filename)
     ylbl = "Number of Visited Nodes";
     % xlabel("Number of Layers")
     ylabel(ylbl);
-    xticklabels(["layer 1+2+3+...+10"]);
-    % xticklabels(["1 failure in path", "3 failures in path", "5 failures in path",...
-    %              "1% node failure", "5% node failure", "10% node failure"]);
+    % xticklabels([""]);
+    xticklabels(["1", "3", "5",...
+                 "1%", "5%", "10%"]);
     legend(lgds, 'Location', 'northeast');
     
     n_bar = length(hb);

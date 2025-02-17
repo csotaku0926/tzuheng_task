@@ -27,22 +27,24 @@ M_RW_rc_time = readmatrix("saves/4-1_RW_rc_time.csv");
 % x_plot_axis = [0.2, 0.3, 0.4, 0.5]; % 3-1 battery-drained node ratio
 % x_tick_lbl = string(x_plot_axis);
 
-x_plot_axis = 1:1;
+x_plot_axis = 1:6;
 
-xs = ["Dijkstra", "A star", "DBS_{OP}", "DBS_{FS}"];
+xs = ["Dijkstra", "A star", "DBS_{RC}"];
+% xs = ["Dijkstra", "A star", "DBS_{OP}", "DBS_{FS}"];
 
 M_FS_time = log2(M_FS_time);
 M_RW_update_cnt = log2(M_RW_update_cnt);
 
-% y_plot = [M_RC_time, M_RC_ratio_time] + 9;
+y_plot = [M_RC_time, M_RC_ratio_time] + 9;
 
-y_plot = zeros(length(xs), 1);
-y_plot(:, 1) = [21021, 19783, 12948, 9400];
+
+% y_plot = zeros(length(xs), 1);
+% y_plot(:, 1) = [21021, 19783, 12948, 9400];
 
 % y_plot = zeros(length(xs), length(x_plot_axis));
 % for i=1:length(x_plot_axis)
 %     y_plot(:, i) = M_FS_time(:, x_plot_axis(i));
 % end
 
-x1 = 9000; x2 = 22000;
-plot_figure(x_plot_axis, y_plot, xs, [x1 x2], x1:1000:x2, 'fig/pls_kill_me/FS_visited.jpg');
+x1 = 0; x2 = 25;
+plot_figure(x_plot_axis, y_plot, xs, [x1 x2], x1:5:x2, 'fig/pls_kill_me/batt_time.jpg');
