@@ -44,10 +44,14 @@ yyaxis left;
 % change left ylabel color to black
 ax.YAxis(1).Color = [0 0 0];
 xticks(x1);
-xticklabels(["4 layers", "7 layers", '1% failure', ''])
+% xticklabels(["4 layers", "7 layers", '7 layers with 1 % of node failures', ''])
+set(gca,'XTickLabel', {"4 layers", ...
+                        "7 layers",...
+                         '                  7 layers with 1 % of node failures', ''}) % modify tick label
 xtickangle(0);
 b1 = bar(x1, y1, 'Facecolor', 'flat'); % Grouped bars
 
+xlabel('Constellation Settings');
 ylabel('Number of Visited Nodes');
 
 clrs = {[.1, .1, .9], [.9, .1, .1], [.1, .9, .1], [.5, .1, .5], [.9, .9, .0]};
@@ -69,7 +73,7 @@ for k = 1:size(y2,1) - 1
 end
 b2(3).FaceColor = clrs{5};
 
-legend([b1, b2(:, 3)], {'Dijkstra', 'A star', 'DBS_{OP}', 'DBS_{FS}', 'DBS_{RC}'},...
+legend([b1, b2(:, 3)], {'Dijkstra', 'A*', 'DBS_{OP}', 'DBS_{FS}', 'DBS_{RC}'},...
                          'Location', 'northeast');
 
 hold off;

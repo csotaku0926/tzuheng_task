@@ -8,11 +8,13 @@ function plot_figure(x, y, lgds, x_lim, x_ticks, saved_filename)
     yticks(x_ticks); %50:0.5:54);
     
     ylbl = "Number of Visited Nodes";
-    % xlabel("Number of Layers")
+    % ylbl = "Reconstruction Time (log2 ms)";
     ylabel(ylbl);
-    % xticklabels([""]);
-    xticklabels(["1", "3", "5",...
-                 "1%", "5%", "10%"]);
+    xticklabels([""]);
+    
+    % xlabel("Battery-drained Node Count")
+    % xticklabels(["1", "3", "5",...
+    %              "1%", "5%", "10%"]);
     legend(lgds, 'Location', 'northeast');
     
     n_bar = length(hb);

@@ -66,39 +66,39 @@ n_sats = [1500, 1500, 1500, 2400, 750, 2500, 4500, 2400, 2700, 2460];
 n_sat_list = {};
 n_orbits = [75, 75, 75, 20, 25, 50, 25, 75, 30, 20];
 num_orbits = {};
-incs = [30, 30, 30, 75, 95.5, 70, 40, 48, 72, 120];
+incs = [50, 40, 30, 75, 95.5, 70, 40, 48, 72, 120];
 inclinations = {};
-gamma = 1e9;
-gammas = []; 
+gammas = [10^2, 10^3, 5 * 10^3, 10^4, 10^5];
 n_layers = length(alts);
 n_runs = n_layers;
 
 % set up other parameters
-% for i = 1:5
-%     orbit_altitude{i} = alts(1:10);
-%     n_sat_list{i} = n_sats(1:10);
-%     num_orbits{i} = n_orbits(1:10);
-%     inclinations{i} = incs(1:10);
-%     gammas(i) = 10^(i+6);
-% end
+low_layer = 1;
+max_layer = 3;
+for i = 1:5
+    orbit_altitude{i} = alts(low_layer:max_layer);
+    n_sat_list{i} = n_sats(low_layer:max_layer);
+    num_orbits{i} = n_orbits(low_layer:max_layer);
+    inclinations{i} = incs(low_layer:max_layer);
+end
 
 
 % structureness
-indices = {[6,7,8,9]};
+% indices = {[6,7,8,9]};
 
-for i = 1:length(indices)
-    orbit_altitude{i} = alts(indices{i});
-    n_sat_list{i} = n_sats(indices{i});
-    num_orbits{i} = n_orbits(indices{i});
-    inclinations{i} = incs(indices{i});
-    gammas(i) = gamma;
-end
+% for i = 1:length(indices)
+%     orbit_altitude{i} = alts(indices{i});
+%     n_sat_list{i} = n_sats(indices{i});
+%     num_orbits{i} = n_orbits(indices{i});
+%     inclinations{i} = incs(indices{i});
+%     gammas(i) = gamma;
+% end
 
 xlbl = "n layer";
 ylbl = "n visited";
 x_plot_axis = 1:5;
 x_tick_lbl = string(x_plot_axis);
-saved_prefix = 'saves/regular2_';
+saved_prefix = 'saves/gamma_FS_';
 what_to_plot = 'n_visited'; % either 'latency', 'elapsed_time', 'update_count' or 'n_visited'
 
 
@@ -196,7 +196,7 @@ New_York_3D = zeros(1, 3);
 %% main testing function
 
 % which alg. to test for
-xs = ["Dijkstra", "A star", "DBS_{OP}"];
+xs = ["DBS_{FS}"];
 N_item = length(xs);
 run_n = length(n_sat_list);
 
