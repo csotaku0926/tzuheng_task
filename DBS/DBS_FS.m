@@ -30,7 +30,6 @@ function [path, w, elapsed_time, n_visited, iter_count, update_cost_count] = DBS
 
     n_visited = 0;
     visited_hash = zeros(n_sat, 1);
-    n_tol = 0; %5 * length(n_sat_list);
 
     iter_count = 0;
     update_cost_count = 0;
@@ -143,10 +142,6 @@ function [path, w, elapsed_time, n_visited, iter_count, update_cost_count] = DBS
         %% end condition
         % check if found intersecting satellite
         if n_inct < n_sat + 1
-            if n_tol > 0
-                n_tol = n_tol - 1;
-                continue;
-            end
 
             sat = n_inct;
             while sat ~= end_sat

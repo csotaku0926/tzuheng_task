@@ -66,16 +66,16 @@ n_sats = [1500, 1500, 1500, 2400, 750, 2500, 4500, 2400, 2700, 2460];
 n_sat_list = {};
 n_orbits = [75, 75, 75, 20, 25, 50, 25, 75, 30, 20];
 num_orbits = {};
-incs = [50, 40, 30, 75, 95.5, 70, 40, 48, 72, 120];
+incs = [30, 40, 40, 45, 95.5, 70, 40, 48, 72, 120];
 inclinations = {};
-gammas = [10^2, 10^3, 5 * 10^3, 10^4, 10^5];
+gammas = [0, 10^2, 10^3, int32(10^3.5), 10^4, int32(10^4.5), 10^5, 10^6];
 n_layers = length(alts);
 n_runs = n_layers;
 
 % set up other parameters
 low_layer = 1;
-max_layer = 3;
-for i = 1:5
+max_layer = 4;
+for i = 1:length(gammas)
     orbit_altitude{i} = alts(low_layer:max_layer);
     n_sat_list{i} = n_sats(low_layer:max_layer);
     num_orbits{i} = n_orbits(low_layer:max_layer);
@@ -94,10 +94,10 @@ end
 %     gammas(i) = gamma;
 % end
 
-xlbl = "n layer";
+xlbl = "gamma";
 ylbl = "n visited";
-x_plot_axis = 1:5;
-x_tick_lbl = string(x_plot_axis);
+x_plot_axis = 1:length(gammas);
+x_tick_lbl = string(gammas);
 saved_prefix = 'saves/gamma_FS_';
 what_to_plot = 'n_visited'; % either 'latency', 'elapsed_time', 'update_count' or 'n_visited'
 
